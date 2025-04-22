@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Personal Finance Tracker
+A Next.js web application for tracking personal finances, including viewing transactions, adding/editing transactions, filtering, and visualizing income vs. expenses.
+Features
 
-## Getting Started
+Dashboard: View total income, expenses, balance, and a pie chart.
+Transaction List: Paginated list with edit/delete options.
+Add/Edit Transactions: Form to create or update transactions.
+Filtering: Filter transactions by category or date range.
+State Management: Uses Redux Toolkit.
+API Integration: Mock API with static data.
+Data Visualization: Recharts for income vs. expenses chart.
+Error Handling: User-friendly error messages.
+Performance: Server Components and dynamic imports.
 
-First, run the development server:
+Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Clone the repository: git clone <repo-url>
+Install dependencies: npm install
+Run the development server: npm run dev
+Open http://localhost:3000 in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mock API
+The API is mocked using static data in lib/api.ts. It simulates the following endpoints:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+GET /transactions: List transactions with optional filters.
+GET /transactions/:id: Get a single transaction.
+POST /transactions: Create a transaction.
+PATCH /transactions/:id: Update a transaction.
+DELETE /transactions/:id: Delete a transaction.
+GET /summary: Get summary data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Assumptions
 
-## Learn More
+Used static mock data instead of JSON Server for simplicity.
+Pagination is basic (Previous/Next buttons) due to mock data limitations.
+Focused on core requirements; infinite scroll and dark mode were not implemented due to time constraints.
 
-To learn more about Next.js, take a look at the following resources:
+Challenges
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Mock API: Simulating pagination and filtering with static data required careful state management.
+Solution: Implemented robust filtering logic in lib/api.ts and used Redux for consistent state.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Running Tests
 
-## Deploy on Vercel
+Install test dependencies: npm install --save-dev jest @testing-library/react @testing-library/jest-dom ts-jest
+Run tests: npm test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Dependencies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js (15.3.1)
+TypeScript
+Tailwind CSS
+Redux Toolkit
+Axios
+Recharts
+Jest (for testing)
